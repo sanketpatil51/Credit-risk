@@ -1,0 +1,605 @@
+{
+  "missing_pct_before": {
+    "pan_number": 2.94,
+    "application_date": 2.23,
+    "age": 3.93,
+    "gender": 7.3,
+    "pincode": 3.92,
+    "employment_type": 5.56,
+    "years_employed": 5.93,
+    "monthly_income": 6.86,
+    "loan_amount": 1.97,
+    "loan_purpose": 3.97,
+    "interest_rate": 2.98,
+    "cibil_score": 11.76,
+    "existing_loans": 8.0,
+    "credit_utilization": 8.9,
+    "dpd_30_count": 9.89,
+    "dpd_60_count": 10.01,
+    "dpd_90_count": 10.01,
+    "bureau_inquiries_6m": 7.98,
+    "oldest_account_age_months": 9.0,
+    "total_credit_limit": 9.9,
+    "number_of_credit_cards": 7.01,
+    "bureau_last_updated": 5.56
+  },
+  "dtypes": {
+    "customer_id": "str",
+    "loan_id": "str",
+    "pan_number": "str",
+    "application_date": "str",
+    "disbursement_date": "str",
+    "age": "float64",
+    "gender": "str",
+    "state": "str",
+    "city_tier": "int64",
+    "pincode": "float64",
+    "employment_type": "str",
+    "years_employed": "float64",
+    "monthly_income": "float64",
+    "loan_amount": "float64",
+    "loan_tenure_months": "int64",
+    "loan_purpose": "str",
+    "loan_type": "str",
+    "interest_rate": "float64",
+    "cibil_score": "float64",
+    "existing_loans": "float64",
+    "credit_utilization": "float64",
+    "dpd_30_count": "float64",
+    "dpd_60_count": "float64",
+    "dpd_90_count": "float64",
+    "bureau_inquiries_6m": "float64",
+    "oldest_account_age_months": "float64",
+    "total_credit_limit": "float64",
+    "number_of_credit_cards": "float64",
+    "bureau_last_updated": "str",
+    "default_12m": "int64"
+  },
+  "numeric_summary": {
+    "age": {
+      "mean": 45.21,
+      "median": 42.0,
+      "std": 49.68,
+      "min": -1.0,
+      "max": 999.0,
+      "q1": 31.0,
+      "q3": 54.0,
+      "skew": 17.192,
+      "missing_pct": 3.93
+    },
+    "monthly_income": {
+      "mean": 7283997.0,
+      "median": 60033.5,
+      "std": 84665955.07,
+      "min": -9999.0,
+      "max": 999999999.0,
+      "q1": 42845.0,
+      "q3": 80123.75,
+      "skew": 11.64,
+      "missing_pct": 6.86
+    },
+    "loan_amount": {
+      "mean": 363957.45,
+      "median": 228914.0,
+      "std": 371914.12,
+      "min": -1.0,
+      "max": 2299976.0,
+      "q1": 112116.0,
+      "q3": 472458.0,
+      "skew": 2.48,
+      "missing_pct": 1.97
+    },
+    "cibil_score": {
+      "mean": 733.32,
+      "median": 689.0,
+      "std": 693.16,
+      "min": -1.0,
+      "max": 9999.0,
+      "q1": 630.0,
+      "q3": 748.0,
+      "skew": 12.92,
+      "missing_pct": 11.76
+    },
+    "credit_utilization": {
+      "mean": 3.88,
+      "median": 0.27,
+      "std": 59.8,
+      "min": -0.5,
+      "max": 999.0,
+      "q1": 0.16,
+      "q3": 0.39,
+      "skew": 16.58,
+      "missing_pct": 8.9
+    },
+    "dpd_30_count": {
+      "mean": 0.94,
+      "median": 0.0,
+      "std": 7.35,
+      "min": -1.0,
+      "max": 99.0,
+      "q1": 0.0,
+      "q3": 1.0,
+      "skew": 13.167,
+      "missing_pct": 9.89
+    },
+    "dpd_60_count": {
+      "mean": 0.15,
+      "median": 0.0,
+      "std": 0.39,
+      "min": 0.0,
+      "max": 4.0,
+      "q1": 0.0,
+      "q3": 0.0,
+      "skew": 2.57,
+      "missing_pct": 10.01
+    },
+    "dpd_90_count": {
+      "mean": 0.06,
+      "median": 0.0,
+      "std": 0.25,
+      "min": 0.0,
+      "max": 3.0,
+      "q1": 0.0,
+      "q3": 0.0,
+      "skew": 4.066,
+      "missing_pct": 10.01
+    },
+    "bureau_inquiries_6m": {
+      "mean": 1.5,
+      "median": 1.0,
+      "std": 1.23,
+      "min": 0.0,
+      "max": 10.0,
+      "q1": 1.0,
+      "q3": 2.0,
+      "skew": 0.822,
+      "missing_pct": 7.98
+    },
+    "existing_loans": {
+      "mean": 1.8,
+      "median": 2.0,
+      "std": 1.34,
+      "min": 0.0,
+      "max": 10.0,
+      "q1": 1.0,
+      "q3": 3.0,
+      "skew": 0.736,
+      "missing_pct": 8.0
+    },
+    "interest_rate": {
+      "mean": 21.45,
+      "median": 18.22,
+      "std": 57.23,
+      "min": -1.0,
+      "max": 999.0,
+      "q1": 14.32,
+      "q3": 22.15,
+      "skew": 16.907,
+      "missing_pct": 2.98
+    },
+    "years_employed": {
+      "mean": 9.32,
+      "median": 2.8,
+      "std": 72.79,
+      "min": -5.0,
+      "max": 999.0,
+      "q1": 1.1,
+      "q3": 5.6,
+      "skew": 13.483,
+      "missing_pct": 5.93
+    }
+  },
+  "employment_raw_freq": {
+    "SALARIED": 33833,
+    "Govt Salaried": 33785,
+    "sal": 33744,
+    "salaried": 33640,
+    "Salried": 33636,
+    "Pvt Salaried": 33369,
+    "Salaried": 33339,
+    "Sal.": 33338,
+    "nan": 29189,
+    "self employed": 20494,
+    "Self-Employed": 20439,
+    "SE": 20367,
+    "S.E.": 20337,
+    "Selfemployed": 20238,
+    "Self Employed": 20130,
+    "Business Owner": 10730,
+    "Proprietor": 10704,
+    "Businessman": 10704,
+    "BUSINESS": 10693,
+    "business": 10605
+  },
+  "gender_raw_freq": {
+    "male": 62131,
+    "MALE": 61953,
+    "M": 61936,
+    "Male": 61777,
+    "m": 61662,
+    "nan": 38307,
+    "female": 33236,
+    "FEMALE": 33053,
+    "f": 32887,
+    "Female": 32681,
+    "F": 32628,
+    "na": 2655,
+    "?": 2619,
+    "unknown": 2598,
+    "Other": 2464
+  },
+  "loan_purpose_freq": {
+    "Personal": 139502,
+    "Home Renovation": 90416,
+    "Medical": 69561,
+    "Business": 59799,
+    "Education": 59439,
+    "Wedding": 39950,
+    "Travel": 25121,
+    "nan": 20855,
+    "Debt Consolidation": 15107,
+    "misc": 1793,
+    "?": 1732,
+    "Other": 1725
+  },
+  "state_freq": {
+    "Gujarat": 35454,
+    "Rajasthan": 35160,
+    "Madhya Pradesh": 35107,
+    "Odisha": 35102,
+    "Uttar Pradesh": 35082,
+    "Karnataka": 35077,
+    "Tamil Nadu": 35015,
+    "Punjab": 35003,
+    "Bihar": 34958,
+    "Delhi": 34922,
+    "Haryana": 34903,
+    "Telangana": 34868,
+    "Kerala": 34804,
+    "Maharashtra": 34794,
+    "West Bengal": 34751
+  },
+  "cibil_hist": {
+    "below_600": 71072,
+    "600_649": 79212,
+    "650_699": 102997,
+    "700_749": 96843,
+    "750_plus": 113133,
+    "missing": 61743
+  },
+  "income_outliers": {
+    "below_0": 3473,
+    "below_10000": 6982,
+    "above_500000": 3531
+  },
+  "default_rate_raw": 0.0826,
+  "duplicate_rows": 25000,
+  "dr_by_cibil_band": {
+    "0_ntc": {
+      "dr": 0.0941,
+      "count": 1265
+    },
+    "1_poor": {
+      "dr": 0.3112,
+      "count": 1144
+    },
+    "2_below_avg": {
+      "dr": 0.1276,
+      "count": 1317
+    },
+    "3_average": {
+      "dr": 0.0277,
+      "count": 1768
+    },
+    "4_good": {
+      "dr": 0.0259,
+      "count": 1624
+    },
+    "5_excellent": {
+      "dr": 0.0182,
+      "count": 1809
+    }
+  },
+  "dr_by_employment": {
+    "Business": {
+      "dr": 0.0843,
+      "count": 1079
+    },
+    "Freelancer": {
+      "dr": 0.122,
+      "count": 541
+    },
+    "Salaried": {
+      "dr": 0.0819,
+      "count": 5310
+    },
+    "Self-Employed": {
+      "dr": 0.0876,
+      "count": 1997
+    }
+  },
+  "dr_by_foir": {
+    "<30%": {
+      "dr": 0.0821,
+      "count": 6966
+    },
+    "30-50%": {
+      "dr": 0.0893,
+      "count": 952
+    },
+    "50-60%": {
+      "dr": 0.0975,
+      "count": 236
+    },
+    "60-75%": {
+      "dr": 0.1116,
+      "count": 233
+    },
+    ">75%": {
+      "dr": 0.113,
+      "count": 540
+    }
+  },
+  "dr_by_state": {
+    "Haryana": 0.1139,
+    "West Bengal": 0.0995,
+    "Delhi": 0.0979,
+    "Kerala": 0.0964,
+    "Uttar Pradesh": 0.093,
+    "Madhya Pradesh": 0.0927,
+    "Bihar": 0.0891,
+    "Maharashtra": 0.0878,
+    "Rajasthan": 0.0835,
+    "Gujarat": 0.0826,
+    "Karnataka": 0.0815,
+    "Odisha": 0.075,
+    "Tamil Nadu": 0.0714,
+    "Telangana": 0.0662,
+    "Punjab": 0.0585
+  },
+  "dr_by_age_band": {
+    "21-30": 0.0767,
+    "31-40": 0.0844,
+    "41-50": 0.0941,
+    "51-65": 0.0862
+  },
+  "dr_by_purpose": {
+    "?": 0.1154,
+    "Other": 0.1111,
+    "Education": 0.0947,
+    "Wedding": 0.0882,
+    "Home Renovation": 0.0867,
+    "Business": 0.0865,
+    "Personal": 0.0864,
+    "Travel": 0.0857,
+    "Medical": 0.072,
+    "Debt Consolidation": 0.0677,
+    "misc": 0.0323
+  },
+  "correlation_with_default": {
+    "age": 0.012,
+    "monthly_income": -0.027,
+    "loan_amount": 0.008,
+    "loan_tenure_months": -0.008,
+    "cibil_score": -0.094,
+    "foir": 0.031,
+    "delinquency_score": 0.143,
+    "bureau_stress_index": 0.019,
+    "credit_utilization": 0.006,
+    "years_employed": -0.04
+  },
+  "clean_numeric_summary": {
+    "age": {
+      "mean": 42.64,
+      "median": 43.0,
+      "std": 12.37,
+      "min": 21.0,
+      "max": 64.0,
+      "skew": -0.029
+    },
+    "monthly_income": {
+      "mean": 64959.39,
+      "median": 59467.0,
+      "std": 30089.65,
+      "min": 10000.0,
+      "max": 169443.5,
+      "skew": 0.91
+    },
+    "loan_amount": {
+      "mean": 370661.88,
+      "median": 255330.5,
+      "std": 374694.27,
+      "min": 43277.11,
+      "max": 2168191.52,
+      "skew": 2.447
+    },
+    "cibil_score": {
+      "mean": 688.55,
+      "median": 689.0,
+      "std": 83.94,
+      "min": 412.0,
+      "max": 900.0,
+      "skew": -0.046
+    },
+    "foir": {
+      "mean": 0.21,
+      "median": 0.12,
+      "std": 0.23,
+      "min": 0.0,
+      "max": 0.95,
+      "skew": 1.831
+    },
+    "credit_utilization": {
+      "mean": 0.29,
+      "median": 0.27,
+      "std": 0.15,
+      "min": 0.0,
+      "max": 0.9,
+      "skew": 0.633
+    },
+    "delinquency_score": {
+      "mean": 0.89,
+      "median": 0.0,
+      "std": 1.51,
+      "min": 0.0,
+      "max": 14.0,
+      "skew": 2.837
+    },
+    "interest_rate": {
+      "mean": 18.21,
+      "median": 18.15,
+      "std": 4.38,
+      "min": 10.5,
+      "max": 26.0,
+      "skew": 0.026
+    },
+    "years_employed": {
+      "mean": 3.93,
+      "median": 2.8,
+      "std": 3.79,
+      "min": 0.5,
+      "max": 30.0,
+      "skew": 2.094
+    }
+  },
+  "final_default_rate": 0.0859,
+  "final_rows": 8927,
+  "final_cols": 63,
+  "ntc_count": 1265,
+  "stale_bureau_count": 4551,
+  "missing_pct_after": {
+    "customer_id": 0.0,
+    "loan_id": 0.0,
+    "pan_number": 0.01,
+    "application_date": 0.0,
+    "disbursement_date": 0.0,
+    "age": 0.0,
+    "gender": 0.0,
+    "state": 0.0,
+    "city_tier": 0.0,
+    "pincode": 5.88,
+    "employment_type": 0.0,
+    "years_employed": 0.0,
+    "monthly_income": 0.0,
+    "loan_amount": 0.0,
+    "loan_tenure_months": 0.0,
+    "loan_purpose": 3.76,
+    "loan_type": 0.0,
+    "interest_rate": 0.0,
+    "cibil_score": 0.0,
+    "existing_loans": 0.0,
+    "credit_utilization": 0.0,
+    "dpd_30_count": 0.0,
+    "dpd_60_count": 0.0,
+    "dpd_90_count": 0.0,
+    "bureau_inquiries_6m": 0.0,
+    "oldest_account_age_months": 0.0,
+    "total_credit_limit": 0.0,
+    "number_of_credit_cards": 0.0,
+    "bureau_last_updated": 7.11,
+    "default_12m": 0.0,
+    "repeat_applicant_flag": 0.0,
+    "pan_valid_flag": 0.0,
+    "app_year": 0.0,
+    "app_month": 0.0,
+    "app_quarter": 0.0,
+    "bureau_age_days": 7.11,
+    "bureau_stale_flag": 0.0,
+    "ntc_flag": 0.0,
+    "dpd_30_count_missing": 0.0,
+    "dpd_60_count_missing": 0.0,
+    "dpd_90_count_missing": 0.0,
+    "bureau_inquiries_6m_missing": 0.0,
+    "oldest_account_age_months_missing": 0.0,
+    "existing_loans_missing": 0.0,
+    "number_of_credit_cards_missing": 0.0,
+    "pincode_valid_flag": 0.0,
+    "monthly_emi_est": 0.0,
+    "foir": 0.0,
+    "income_to_loan_ratio": 0.0,
+    "annual_income": 0.0,
+    "loan_to_income_ratio": 0.0,
+    "delinquency_score": 0.0,
+    "any_dpd_90_flag": 0.0,
+    "any_delinquency_flag": 0.0,
+    "bureau_stress_index": 0.0,
+    "high_foir_flag": 0.0,
+    "low_income_flag": 0.0,
+    "high_loan_flag": 0.0,
+    "cibil_band": 0.0,
+    "employment_stability": 0.0,
+    "loan_size_cat": 0.0,
+    "age_band": 0.0,
+    "foir_band": 0.0
+  },
+  "income_dist": {
+    "<20k": 362,
+    "20-40k": 1263,
+    "40-60k": 2904,
+    "60-80k": 2230,
+    "80-100k": 1125,
+    "100-150k": 892,
+    "150k+": 151
+  },
+  "cibil_dist_clean": {
+    "NTC": 1265,
+    "<600": 1144,
+    "600-649": 1317,
+    "650-699": 1768,
+    "700-749": 1624,
+    "750+": 1809
+  },
+  "loan_purpose_clean_dist": {
+    "Personal": 2314,
+    "Home Renovation": 1614,
+    "Medical": 1167,
+    "Education": 1024,
+    "Business": 994,
+    "Wedding": 714,
+    "Travel": 420,
+    "Debt Consolidation": 251,
+    "Other": 36,
+    "misc": 31,
+    "?": 26
+  },
+  "woe_iv": {
+    "cibil_band": {
+      "woe": {
+        "0_ntc": -0.0996,
+        "1_poor": -1.5699,
+        "2_below_avg": -0.4418,
+        "3_average": 1.1932,
+        "4_good": 1.2643,
+        "5_excellent": 1.6211
+      },
+      "iv": 1.2472
+    },
+    "employment_type": {
+      "woe": {
+        "Business": 0.0203,
+        "Freelancer": -0.3909,
+        "Salaried": 0.052,
+        "Self-Employed": -0.0216
+      },
+      "iv": 0.0126
+    },
+    "age_band": {
+      "woe": {
+        "21-30": 0.1238,
+        "31-40": 0.0199,
+        "41-50": -0.0996,
+        "51-65": -0.0036
+      },
+      "iv": 0.0061
+    },
+    "loan_size_cat": {
+      "woe": {
+        "Large": 0.0551,
+        "Medium": 0.0052,
+        "Small": 0.0049,
+        "Very Large": -0.0988
+      },
+      "iv": 0.0023
+    }
+  }
+}

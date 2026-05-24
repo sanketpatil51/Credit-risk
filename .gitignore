@@ -1,0 +1,30 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Kaggle raw data — download separately (101 MB, exceeds GitHub limit)
+data/raw_loan_data.csv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+.env.local
+
+# Kaggle credentials
+kaggle.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code settings
+.claude/

@@ -1,0 +1,120 @@
+{
+  "lr_auc": 0.8229473039215686,
+  "lr_ks": 0.5235294117647058,
+  "lr_gini": 0.6458946078431371,
+  "gb_auc": 0.8225362540849673,
+  "gb_ks": 0.5354166666666667,
+  "gb_gini": 0.6450725081699347,
+  "gb_avg_precision": 0.3614798361922662,
+  "optimal_threshold": 0.16364682125714888,
+  "psi": 0.0054136465519188425,
+  "psi_status": "Stable \u2705",
+  "confusion_matrix": {
+    "tn": 1777,
+    "fp": 263,
+    "fn": 85,
+    "tp": 107
+  },
+  "precision": 0.2892,
+  "recall": 0.5573,
+  "f1": 0.3808,
+  "cv_auc_mean": 0.8298,
+  "cv_auc_std": 0.009,
+  "train_size": 6695,
+  "test_size": 2232,
+  "n_features": 35,
+  "feature_importance": {
+    "cibil_band_woe": 0.261193,
+    "cibil_score": 0.115916,
+    "years_employed": 0.064308,
+    "interest_rate": 0.05848,
+    "monthly_income": 0.055062,
+    "oldest_account_age_months": 0.049646,
+    "delinquency_score": 0.048451,
+    "credit_utilization": 0.048306,
+    "dpd_90_count": 0.046016,
+    "any_dpd_90_flag": 0.038268,
+    "loan_amount": 0.036031,
+    "age": 0.035442,
+    "foir": 0.030365,
+    "income_to_loan_ratio": 0.019548,
+    "loan_to_income_ratio": 0.01684,
+    "loan_tenure_months": 0.01621,
+    "existing_loans": 0.013111,
+    "age_band_woe": 0.00581,
+    "bureau_stale_flag": 0.005575,
+    "bureau_inquiries_6m": 0.005516
+  },
+  "risk_band_summary": {
+    "High Risk": {
+      "count": 1315,
+      "avg_score": 553.7,
+      "avg_pd": 0.1368,
+      "actual_dr": 0.1331
+    },
+    "Elevated": {
+      "count": 916,
+      "avg_score": 616.2,
+      "avg_pd": 0.0117,
+      "actual_dr": 0.0186
+    },
+    "Moderate": {
+      "count": 1,
+      "avg_score": 656.0,
+      "avg_pd": 0.0028,
+      "actual_dr": 0.0
+    }
+  },
+  "decile_analysis": {
+    "10": {
+      "bads": 1,
+      "total": 224,
+      "bad_rate": 0.0045
+    },
+    "9": {
+      "bads": 1,
+      "total": 223,
+      "bad_rate": 0.0045
+    },
+    "8": {
+      "bads": 7,
+      "total": 223,
+      "bad_rate": 0.0314
+    },
+    "7": {
+      "bads": 6,
+      "total": 223,
+      "bad_rate": 0.0269
+    },
+    "6": {
+      "bads": 5,
+      "total": 223,
+      "bad_rate": 0.0224
+    },
+    "5": {
+      "bads": 9,
+      "total": 223,
+      "bad_rate": 0.0404
+    },
+    "4": {
+      "bads": 12,
+      "total": 223,
+      "bad_rate": 0.0538
+    },
+    "3": {
+      "bads": 32,
+      "total": 223,
+      "bad_rate": 0.1435
+    },
+    "2": {
+      "bads": 41,
+      "total": 223,
+      "bad_rate": 0.1839
+    },
+    "1": {
+      "bads": 78,
+      "total": 224,
+      "bad_rate": 0.3482
+    }
+  }
+}
