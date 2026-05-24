@@ -7,10 +7,10 @@
 ```
 fintech_project/
 ├── data/
-│   ├── raw_loan_data.csv         # Raw records from Kaggle (download separately)
+│   ├── raw_loan_data.csv         # Raw loan records (525,000 rows)
 │   └── clean_loan_data.csv       # Cleaned, model-ready data
 ├── src/
-│   ├── step1_load_data.py        # Load & validate Kaggle dataset
+│   ├── step1_load_data.py        # Load & validate raw dataset
 │   ├── step2_clean_eda.py        # 14-step cleaning + full EDA
 │   └── step3_model_building.py   # PD model + scorecard + monitoring
 ├── models/
@@ -34,28 +34,18 @@ fintech_project/
 # 1. Install dependencies
 pip install -r requirements.txt
 
-# 2. Download dataset from Kaggle (one-time setup)
-pip install kaggle
-kaggle datasets download -d subhamjain/loan-prediction-based-on-customer-behavior
-# Unzip into data/ folder as raw_loan_data.csv
-
-# 3. Validate the loaded data
+# 2. Validate the loaded data
 python src/step1_load_data.py
 
-# 4. Run cleaning + EDA (takes ~30-60s)
+# 3. Run cleaning + EDA (takes ~30-60s)
 python src/step2_clean_eda.py
 
-# 5. Build and evaluate model
+# 4. Build and evaluate model
 python src/step3_model_building.py
 
-# 6. Launch Streamlit app
+# 5. Launch Streamlit app
 streamlit run app/streamlit_app.py
 ```
-
-## 📦 Data Source
-
-> **Kaggle Dataset:** [Loan Prediction Based on Customer Behavior](https://www.kaggle.com/datasets/subhamjain/loan-prediction-based-on-customer-behavior)
-> License: CC0 — Public Domain
 
 ---
 
