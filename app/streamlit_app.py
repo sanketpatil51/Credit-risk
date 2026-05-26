@@ -87,7 +87,7 @@ with st.sidebar:
     st.markdown('<div class="sidebar-header">Navigation</div>', unsafe_allow_html=True)
     page = st.radio("", [
         "📊 Overview",
-        "🔍 EDA Explorer",
+        #"🔍 EDA Explorer",
         "🤖 Model Performance",
         "🎯 Live Predictor",
     ], label_visibility="collapsed")
