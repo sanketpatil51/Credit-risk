@@ -206,158 +206,158 @@ if page == "📊 Overview":
 
 # ════════════════════════════════════════════════════════════
 # PAGE 2 — EDA EXPLORER
-# ════════════════════════════════════════════════════════════
-elif page == "🔍 EDA Explorer":
-    st.title("EDA Explorer")
-    st.markdown("*Interactive exploration of the cleaned finance dataset*")
-    st.markdown("---")
+# # ════════════════════════════════════════════════════════════
+# elif page == "🔍 EDA Explorer":
+#     st.title("EDA Explorer")
+#     st.markdown("*Interactive exploration of the cleaned finance dataset*")
+#     st.markdown("---")
 
-    tab1,tab2,tab3,tab4 = st.tabs(["📈 Distributions","🎯 Default Drivers","🔗 Correlations","📋 WOE / IV"])
+#     tab1,tab2,tab3,tab4 = st.tabs(["📈 Distributions","🎯 Default Drivers","🔗 Correlations","📋 WOE / IV"])
 
-    with tab1:
-        st.subheader("Numeric Feature Distributions")
-        col1,col2 = st.columns(2)
-        with col1:
-            feat_sel = st.selectbox("Select feature", ['monthly_income','loan_amount','cibil_score',
-                                                        'foir','age','years_employed',
-                                                        'interest_rate','delinquency_score'])
-        with col2:
-            color_by = st.selectbox("Color by", ['default_12m','employment_type','cibil_band','age_band'])
+#     with tab1:
+#         st.subheader("Numeric Feature Distributions")
+#         col1,col2 = st.columns(2)
+#         with col1:
+#             feat_sel = st.selectbox("Select feature", ['monthly_income','loan_amount','cibil_score',
+#                                                         'foir','age','years_employed',
+#                                                         'interest_rate','delinquency_score'])
+#         with col2:
+#             color_by = st.selectbox("Color by", ['default_12m','employment_type','cibil_band','age_band'])
 
-        if feat_sel in df.columns:
-            plot_df = df.copy()
-            plot_df[feat_sel] = pd.to_numeric(plot_df[feat_sel].replace(-1,np.nan),errors='coerce')
-            plot_df = plot_df.dropna(subset=[feat_sel])
-            plot_df[color_by] = plot_df[color_by].astype(str)
+#         if feat_sel in df.columns:
+#             plot_df = df.copy()
+#             plot_df[feat_sel] = pd.to_numeric(plot_df[feat_sel].replace(-1,np.nan),errors='coerce')
+#             plot_df = plot_df.dropna(subset=[feat_sel])
+#             plot_df[color_by] = plot_df[color_by].astype(str)
 
-            fig = px.histogram(plot_df.sample(min(8000,len(plot_df)),random_state=42),
-                               x=feat_sel, color=color_by, nbins=50,
-                               color_discrete_sequence=px.colors.qualitative.Set2,
-                               barmode='overlay', opacity=0.7,
-                               title=f"Distribution of {feat_sel} by {color_by}")
-            fig.update_layout(plot_bgcolor='white', height=380)
-            st.plotly_chart(fig, use_container_width=True)
+#             fig = px.histogram(plot_df.sample(min(8000,len(plot_df)),random_state=42),
+#                                x=feat_sel, color=color_by, nbins=50,
+#                                color_discrete_sequence=px.colors.qualitative.Set2,
+#                                barmode='overlay', opacity=0.7,
+#                                title=f"Distribution of {feat_sel} by {color_by}")
+#             fig.update_layout(plot_bgcolor='white', height=380)
+#             st.plotly_chart(fig, use_container_width=True)
 
-        # Summary stats table
-        st.subheader("Summary Statistics (Post-Cleaning)")
-        stats = eda.get('clean_numeric_summary', {})
-        if stats:
-            stats_df = pd.DataFrame(stats).T.reset_index()
-            stats_df.columns = ['Feature','Mean','Median','Std','Min','Max','Skewness']
-            st.dataframe(stats_df, use_container_width=True, hide_index=True)
+#         # Summary stats table
+#         st.subheader("Summary Statistics (Post-Cleaning)")
+#         stats = eda.get('clean_numeric_summary', {})
+#         if stats:
+#             stats_df = pd.DataFrame(stats).T.reset_index()
+#             stats_df.columns = ['Feature','Mean','Median','Std','Min','Max','Skewness']
+#             st.dataframe(stats_df, use_container_width=True, hide_index=True)
 
-    with tab2:
-        st.subheader("Default Rate Drivers")
+#     with tab2:
+#         st.subheader("Default Rate Drivers")
 
-        col1,col2 = st.columns(2)
-        with col1:
-            # FOIR buckets
-            dr_foir = eda.get('dr_by_foir',{})
-            if dr_foir:
-                f_keys = [k for k in dr_foir if k!='nan']
-                f_vals = [dr_foir[k]['dr']*100 for k in f_keys]
-                fig = go.Figure(go.Bar(
-                    x=f_keys, y=f_vals,
-                    marker_color=['#2d6a4f' if v<5 else '#b8860b' if v<10 else '#c8401a' for v in f_vals],
-                    text=[f"{v:.1f}%" for v in f_vals], textposition='outside'))
-                fig.update_layout(title="Default Rate by FOIR Band",
-                                  yaxis_title="Default Rate (%)", plot_bgcolor='white', height=320)
-                st.plotly_chart(fig, use_container_width=True)
+#         col1,col2 = st.columns(2)
+#         with col1:
+#             # FOIR buckets
+#             dr_foir = eda.get('dr_by_foir',{})
+#             if dr_foir:
+#                 f_keys = [k for k in dr_foir if k!='nan']
+#                 f_vals = [dr_foir[k]['dr']*100 for k in f_keys]
+#                 fig = go.Figure(go.Bar(
+#                     x=f_keys, y=f_vals,
+#                     marker_color=['#2d6a4f' if v<5 else '#b8860b' if v<10 else '#c8401a' for v in f_vals],
+#                     text=[f"{v:.1f}%" for v in f_vals], textposition='outside'))
+#                 fig.update_layout(title="Default Rate by FOIR Band",
+#                                   yaxis_title="Default Rate (%)", plot_bgcolor='white', height=320)
+#                 st.plotly_chart(fig, use_container_width=True)
 
-        with col2:
-            # By state
-            dr_state = eda.get('dr_by_state',{})
-            if dr_state:
-                s_keys = list(dr_state.keys())[:12]
-                s_vals = [dr_state[k]*100 for k in s_keys]
-                fig = go.Figure(go.Bar(x=s_keys, y=s_vals,
-                    marker_color='#1a6b6b',
-                    text=[f"{v:.1f}%" for v in s_vals], textposition='outside'))
-                fig.update_layout(title="Default Rate by State",
-                                  yaxis_title="Default Rate (%)", plot_bgcolor='white', height=320)
-                st.plotly_chart(fig, use_container_width=True)
+#         with col2:
+#             # By state
+#             dr_state = eda.get('dr_by_state',{})
+#             if dr_state:
+#                 s_keys = list(dr_state.keys())[:12]
+#                 s_vals = [dr_state[k]*100 for k in s_keys]
+#                 fig = go.Figure(go.Bar(x=s_keys, y=s_vals,
+#                     marker_color='#1a6b6b',
+#                     text=[f"{v:.1f}%" for v in s_vals], textposition='outside'))
+#                 fig.update_layout(title="Default Rate by State",
+#                                   yaxis_title="Default Rate (%)", plot_bgcolor='white', height=320)
+#                 st.plotly_chart(fig, use_container_width=True)
 
-        col1, col2 = st.columns(2)
-        with col1:
-            dr_emp = eda.get('dr_by_employment',{})
-            if dr_emp:
-                e_keys = list(dr_emp.keys())
-                e_vals = [dr_emp[k]['dr']*100 for k in e_keys]
-                fig = go.Figure(go.Bar(x=e_keys, y=e_vals,
-                    marker_color=['#2d6a4f','#c8401a','#1a6b6b','#b8860b'],
-                    text=[f"{v:.1f}%" for v in e_vals], textposition='outside'))
-                fig.update_layout(title="Default Rate by Employment Type",
-                                  yaxis_title="Default Rate (%)", plot_bgcolor='white', height=300)
-                st.plotly_chart(fig, use_container_width=True)
+#         col1, col2 = st.columns(2)
+#         with col1:
+#             dr_emp = eda.get('dr_by_employment',{})
+#             if dr_emp:
+#                 e_keys = list(dr_emp.keys())
+#                 e_vals = [dr_emp[k]['dr']*100 for k in e_keys]
+#                 fig = go.Figure(go.Bar(x=e_keys, y=e_vals,
+#                     marker_color=['#2d6a4f','#c8401a','#1a6b6b','#b8860b'],
+#                     text=[f"{v:.1f}%" for v in e_vals], textposition='outside'))
+#                 fig.update_layout(title="Default Rate by Employment Type",
+#                                   yaxis_title="Default Rate (%)", plot_bgcolor='white', height=300)
+#                 st.plotly_chart(fig, use_container_width=True)
 
-        with col2:
-            dr_pur = eda.get('dr_by_purpose',{})
-            if dr_pur:
-                p_keys = list(dr_pur.keys())
-                p_vals = [dr_pur[k]*100 for k in p_keys]
-                fig = go.Figure(go.Bar(x=p_keys, y=p_vals,
-                    marker_color='#b8860b',
-                    text=[f"{v:.1f}%" for v in p_vals], textposition='outside'))
-                fig.update_layout(title="Default Rate by Loan Purpose",
-                                  yaxis_title="Default Rate (%)", plot_bgcolor='white', height=300)
-                st.plotly_chart(fig, use_container_width=True)
+#         with col2:
+#             dr_pur = eda.get('dr_by_purpose',{})
+#             if dr_pur:
+#                 p_keys = list(dr_pur.keys())
+#                 p_vals = [dr_pur[k]*100 for k in p_keys]
+#                 fig = go.Figure(go.Bar(x=p_keys, y=p_vals,
+#                     marker_color='#b8860b',
+#                     text=[f"{v:.1f}%" for v in p_vals], textposition='outside'))
+#                 fig.update_layout(title="Default Rate by Loan Purpose",
+#                                   yaxis_title="Default Rate (%)", plot_bgcolor='white', height=300)
+#                 st.plotly_chart(fig, use_container_width=True)
 
-    with tab3:
-        st.subheader("Correlation with Default")
-        corr = eda.get('correlation_with_default',{})
-        if corr:
-            corr_df = pd.Series(corr).sort_values()
-            colors = ['#c8401a' if v>0 else '#2d6a4f' for v in corr_df.values]
-            fig = go.Figure(go.Bar(x=corr_df.values, y=corr_df.index,
-                orientation='h', marker_color=colors,
-                text=[f"{v:.3f}" for v in corr_df.values], textposition='outside'))
-            fig.update_layout(title="Feature Correlation with Default (12m)",
-                              xaxis_title="Pearson Correlation",
-                              plot_bgcolor='white', height=450)
-            st.plotly_chart(fig, use_container_width=True)
+#     with tab3:
+#         st.subheader("Correlation with Default")
+#         corr = eda.get('correlation_with_default',{})
+#         if corr:
+#             corr_df = pd.Series(corr).sort_values()
+#             colors = ['#c8401a' if v>0 else '#2d6a4f' for v in corr_df.values]
+#             fig = go.Figure(go.Bar(x=corr_df.values, y=corr_df.index,
+#                 orientation='h', marker_color=colors,
+#                 text=[f"{v:.3f}" for v in corr_df.values], textposition='outside'))
+#             fig.update_layout(title="Feature Correlation with Default (12m)",
+#                               xaxis_title="Pearson Correlation",
+#                               plot_bgcolor='white', height=450)
+#             st.plotly_chart(fig, use_container_width=True)
 
-        # Scatter
-        st.subheader("Feature vs Feature (scatter)")
-        col1,col2,col3 = st.columns(3)
-        with col1: x_feat = st.selectbox("X axis",['cibil_score','monthly_income','foir','age'])
-        with col2: y_feat = st.selectbox("Y axis",['foir','delinquency_score','loan_amount','cibil_score'])
-        with col3: sz_feat= st.selectbox("Size by",['loan_amount','monthly_income','age'])
+#         # Scatter
+#         st.subheader("Feature vs Feature (scatter)")
+#         col1,col2,col3 = st.columns(3)
+#         with col1: x_feat = st.selectbox("X axis",['cibil_score','monthly_income','foir','age'])
+#         with col2: y_feat = st.selectbox("Y axis",['foir','delinquency_score','loan_amount','cibil_score'])
+#         with col3: sz_feat= st.selectbox("Size by",['loan_amount','monthly_income','age'])
 
-        sdf = df.sample(min(3000,len(df)),random_state=1).copy()
-        for c in [x_feat,y_feat,sz_feat]:
-            sdf[c] = pd.to_numeric(sdf[c].replace(-1,np.nan),errors='coerce')
-        sdf = sdf.dropna(subset=[x_feat,y_feat])
-        sdf['Default'] = sdf['default_12m'].map({0:'No',1:'Yes'})
+#         sdf = df.sample(min(3000,len(df)),random_state=1).copy()
+#         for c in [x_feat,y_feat,sz_feat]:
+#             sdf[c] = pd.to_numeric(sdf[c].replace(-1,np.nan),errors='coerce')
+#         sdf = sdf.dropna(subset=[x_feat,y_feat])
+#         sdf['Default'] = sdf['default_12m'].map({0:'No',1:'Yes'})
 
-        fig = px.scatter(sdf, x=x_feat, y=y_feat, color='Default',
-                         color_discrete_map={'No':'#2d6a4f','Yes':'#c8401a'},
-                         opacity=0.5, title=f"{x_feat} vs {y_feat}")
-        fig.update_layout(plot_bgcolor='white', height=380)
-        st.plotly_chart(fig, use_container_width=True)
+#         fig = px.scatter(sdf, x=x_feat, y=y_feat, color='Default',
+#                          color_discrete_map={'No':'#2d6a4f','Yes':'#c8401a'},
+#                          opacity=0.5, title=f"{x_feat} vs {y_feat}")
+#         fig.update_layout(plot_bgcolor='white', height=380)
+#         st.plotly_chart(fig, use_container_width=True)
 
-    with tab4:
-        st.subheader("Weight of Evidence (WOE) & Information Value (IV)")
-        st.info("WOE = ln(% Good / % Bad) per category. IV measures overall predictive power of a variable.")
+#     with tab4:
+#         st.subheader("Weight of Evidence (WOE) & Information Value (IV)")
+#         st.info("WOE = ln(% Good / % Bad) per category. IV measures overall predictive power of a variable.")
 
-        woe_iv = eda.get('woe_iv',{})
-        col1,col2 = st.columns(2)
+#         woe_iv = eda.get('woe_iv',{})
+#         col1,col2 = st.columns(2)
 
-        for i,(feat, data) in enumerate(woe_iv.items()):
-            with (col1 if i%2==0 else col2):
-                woe_dict = data['woe']
-                iv_val   = data['iv']
-                st.markdown(f"**{feat}** — IV = {iv_val:.4f} "
-                            f"({'Strong' if iv_val>0.3 else 'Moderate' if iv_val>0.1 else 'Weak'})")
-                woe_keys = list(woe_dict.keys())
-                woe_vals = [woe_dict[k] for k in woe_keys]
-                fig = go.Figure(go.Bar(
-                    x=woe_vals, y=woe_keys, orientation='h',
-                    marker_color=['#2d6a4f' if v>0 else '#c8401a' for v in woe_vals],
-                    text=[f"{v:.3f}" for v in woe_vals], textposition='outside'))
-                fig.update_layout(plot_bgcolor='white', height=220,
-                                  margin=dict(l=10,r=30,t=10,b=10),
-                                  xaxis_title="WOE")
-                st.plotly_chart(fig, use_container_width=True)
+#         for i,(feat, data) in enumerate(woe_iv.items()):
+#             with (col1 if i%2==0 else col2):
+#                 woe_dict = data['woe']
+#                 iv_val   = data['iv']
+#                 st.markdown(f"**{feat}** — IV = {iv_val:.4f} "
+#                             f"({'Strong' if iv_val>0.3 else 'Moderate' if iv_val>0.1 else 'Weak'})")
+#                 woe_keys = list(woe_dict.keys())
+#                 woe_vals = [woe_dict[k] for k in woe_keys]
+#                 fig = go.Figure(go.Bar(
+#                     x=woe_vals, y=woe_keys, orientation='h',
+#                     marker_color=['#2d6a4f' if v>0 else '#c8401a' for v in woe_vals],
+#                     text=[f"{v:.3f}" for v in woe_vals], textposition='outside'))
+#                 fig.update_layout(plot_bgcolor='white', height=220,
+#                                   margin=dict(l=10,r=30,t=10,b=10),
+#                                   xaxis_title="WOE")
+#                 st.plotly_chart(fig, use_container_width=True)
 
 # ════════════════════════════════════════════════════════════
 # PAGE 3 — MODEL PERFORMANCE
