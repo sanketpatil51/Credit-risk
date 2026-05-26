@@ -94,7 +94,7 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown('<div class="sidebar-header">Dataset Info</div>', unsafe_allow_html=True)
-    st.caption(f"**Test Records:** {len(df):,}")
+    st.caption(f"**Records:** {len(df):,}")
     st.caption(f"**Features:** {df.shape[1]}")
     st.caption(f"**Default Rate:** {df['default_12m'].mean():.1%}")
     st.caption(f"**Model AUC:** {mrep['gb_auc']:.4f}")
@@ -115,7 +115,7 @@ if page == "📊 Overview":
     # KPI Row 1
     c1,c2,c3,c4,c5,c6 = st.columns(6)
     with c1:
-        st.metric("Raw Records", "525,000", "input")
+        st.metric("Raw Records", "525K", "input")
     with c2:
         st.metric("Clean Records", f"{len(df):,}", "after dedup+clean")
     with c3:
