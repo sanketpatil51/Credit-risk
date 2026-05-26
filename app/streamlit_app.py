@@ -94,7 +94,7 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown('<div class="sidebar-header">Dataset Info</div>', unsafe_allow_html=True)
-    st.caption(f"**Records:** {len(df):,}")
+    st.caption(f"**Test Records:** {len(df):,}")
     st.caption(f"**Features:** {df.shape[1]}")
     st.caption(f"**Default Rate:** {df['default_12m'].mean():.1%}")
     st.caption(f"**Model AUC:** {mrep['gb_auc']:.4f}")
