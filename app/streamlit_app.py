@@ -76,7 +76,7 @@ try:
     model, scaler, FEATURES = load_model()
     data_ok = True
 except Exception as e:
-    st.error(f"⚠️ Run the pipeline first: `python src/step1_generate_data.py && python src/step2_clean_eda.py && python src/step3_model_building.py`\n\nError: {e}")
+    st.error(f"⚠️ Run the pipeline first: `python src/step1_load_data.py && python src/step2_clean_eda.py && python src/step3_model_building.py`\n\nError: {e}")
     data_ok = False
     st.stop()
 
@@ -101,7 +101,7 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown("**Pipeline Steps:**")
-    for step in ["✅ Data Generation","✅ Cleaning + EDA","✅ Model Building","✅ Streamlit Deploy"]:
+    for step in ["✅ Data Loading","✅ Cleaning + EDA","✅ Model Building","✅ Streamlit Deploy"]:
         st.caption(step)
 
 # ════════════════════════════════════════════════════════════
