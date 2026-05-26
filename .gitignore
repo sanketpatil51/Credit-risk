@@ -3,6 +3,9 @@
 venv/
 env/
 
+# Raw data (too large for GitHub, not needed for Streamlit app)
+data/raw_loan_data.csv
+
 # Python cache
 __pycache__/
 *.pyc
